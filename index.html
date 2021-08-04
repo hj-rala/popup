@@ -1,0 +1,80 @@
+<!-- lyPopupWrap main -->
+	<div class="lyPopupWrap">
+		
+		<div class="lyCon" id="mainlyPopup">
+			<img src="https://ipsumimage.appspot.com/600x600" class="pc-img" alt="팝업 이미지" />
+			<img src="https://ipsumimage.appspot.com/340x340" class="m-img" alt="팝업 이미지" />
+			
+			<div class="check-area">
+				<p>
+					<input type="checkbox" id="taday">
+					<label for="taday">오늘만 보기</label>
+				</p>
+				<a href="#javascript:;" class="lyClose" onclick="lyClose(this)">팝업닫기</a>
+			</div>
+		</div>
+		
+		<div class="lyCon" id="mainlyPopup1">
+			<img src="https://ipsumimage.appspot.com/300x800" class="pc-img" alt="팝업 이미지" />
+			<img src="https://ipsumimage.appspot.com/340x600" class="m-img" alt="팝업 이미지" />
+			
+			<div class="check-area">
+				<p>
+					<input type="checkbox" id="taday1">
+					<label for="taday1">오늘만 보기</label>
+				</p>
+				<a href="#javascript:;" class="lyClose" onclick="lyClose(this)">팝업닫기</a>
+			</div>
+		</div>
+			
+	</div>
+	<!-- //lyPopupWrap main -->
+  
+  
+  
+  
+  
+  
+.lyPopupWrap {position: absolute; top: 20px; left: 20px; z-index: 9999; display: flex; justify-content: flex-start; align-items: flex-start; flex-wrap: wrap;}
+.lyPopupWrap img {max-width: 100%;}
+.lyPopupWrap img.m-img {display: none;}
+.lyPopupWrap .lyCon {position: relative; margin: 0 10px 10px 0;}
+.lyPopupWrap .lyCon .check-area {position: absolute; bottom: 0; left: 0; height: 50px; padding: 0 15px; width: 100%; display: flex; justify-content: space-between; align-items: center; background: rgba(38, 208, 191,0.7);}
+.lyPopupWrap .lyCon .check-area input[type="checkbox"] + label {cursor: pointer; color: #fff;}
+.lyPopupWrap .lyCon .check-area input[type="checkbox"] + label span {top: 3px;}
+.lyPopupWrap .lyCon .check-area .lyClose {display: block; width: 28px; height: 28px; position: relative; font-size: 0;}
+.lyPopupWrap .lyCon .check-area .lyClose:before,
+.lyPopupWrap .lyCon .check-area .lyClose:after {content: ''; display: inline-block; width: 1px; height: 30px; background-color: #fff; position: absolute; top: 0; left: 50%;}
+.lyPopupWrap .lyCon .check-area .lyClose:before {transform: rotate(45deg);}
+.lyPopupWrap .lyCon .check-area .lyClose:after {transform: rotate(-45deg);}
+
+@media screen and (max-width: 768px) {
+	.lyPopupWrap {top: 10px; left: 10px;}
+	.lyPopupWrap img.pc-img {display: none;}
+	.lyPopupWrap img.m-img {display: block;}
+	.lyPopupWrap .lyCon .check-area {height: 35px;}
+	.lyPopupWrap .lyCon .check-area input[type="checkbox"] + label {font-size: 13px;padding-left: 25px;}
+	.lyPopupWrap .lyCon .check-area input[type="checkbox"] + label span {width: 18px; height: 18px; background-size: 18px 35px; top: 4px;}
+	.lyPopupWrap .lyCon .check-area input[type="checkbox"]:checked + label span, input[type="radio"]:checked + label span {background-position: 0 -18px;}
+	.lyPopupWrap .lyCon .check-area .lyClose {width: 20px;height: 20px;}
+	.lyPopupWrap .lyCon .check-area .lyClose:before,
+	.lyPopupWrap .lyCon .check-area .lyClose:after {height: 22px;}
+}
+  
+  
+  
+  
+//lyPopupWrap
+function lyOpen(id) {
+  // 팝업
+	for(i=0; i < id.length; i++) {
+		var $lyAcive = $('#' + id[i]);
+		$lyAcive.show();
+		$lyAcive.addClass('open');
+	}
+}
+function lyClose(target){
+  // 팝업닫기
+  $(target).closest('.lyCon').hide();
+  $(target).closest('.lyCon').removeClass('open');
+}
